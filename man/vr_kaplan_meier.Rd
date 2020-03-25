@@ -2,10 +2,11 @@
 % Please edit documentation in R/vr_kaplan_meier.R
 \name{vr_kaplan_meier}
 \alias{vr_kaplan_meier}
-\title{Title}
+\title{Generate Kaplan-Meier plot for survival data}
 \usage{
 vr_kaplan_meier(
   data,
+  equation = "survival::Surv(time, status) ~ trt",
   title = "",
   abbreviations = NULL,
   variable_definitions = NULL,
@@ -16,9 +17,9 @@ vr_kaplan_meier(
 )
 }
 \arguments{
-\item{data}{}
+\item{data}{input data set}
 
-\item{title}{}
+\item{title}{plot title}
 
 \item{abbreviations}{}
 
@@ -26,15 +27,35 @@ vr_kaplan_meier(
 
 \item{N}{}
 
-\item{N_unit}{}
+\item{N_unit}{unit label for big N (i.e. patients, subjects, etc.)}
 
-\item{time_unit}{}
+\item{time_unit}{unit label for the x-axis (i.e. minutes, days, weeks, years)}
 
-\item{data_source}{}
+\item{data_source}{label for the data source}
 }
 \value{
-
+ggplot object for the KM plot
 }
 \description{
-Title
+Generate Kaplan-Meier plot for survival data
+}
+\examples{
+library(survival)
+library(dplyr)
+library(magrittr)
+library(ggplot2)
+# Load data from the Veteran's Cancer Study
+data(veteran)
+
+data <-  veteran \%>\% 
+  mutate(trt = as.factor(case_when(
+  trt == 1 ~ "standard therapy", 
+  trt == 2 ~ "test chemotherapy"
+  )))
+  
+  vr_kaplan_meier(
+    data = data, 
+    data_source = "Veteran's Lung Cancer Study", 
+    title = "Comparison of survival in male patients having advanced inoperable lung cancer \nunder standard therapy vs. test chemotherapy"
+    )
 }

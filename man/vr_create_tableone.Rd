@@ -8,7 +8,7 @@ vr_create_tableone(
   data,
   groupCols = NULL,
   overall = TRUE,
-  summary_function = vr_summarize
+  summary_function = vr_summarize_tab1
 )
 }
 \arguments{
@@ -39,7 +39,7 @@ variables prior to creating the summary table by using dplyr::select()
 }
 \examples{
 library(survival)
-library(tidyverse)
+library(dplyr)
 ovarian \%>\% 
 select(-fustat) \%>\% 
   mutate(age_group = factor(case_when(age <= 50 ~ "<= 50 years",

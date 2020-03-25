@@ -2,11 +2,8 @@
 /notebooks/libs
 /notebooks/*.html
 .Rproj.user
-visR-2.Rproj
+visR.Rproj
 .Rbuildignore
 visR-usethis.Rproj
 inst/doc
-.RData
-.Rhistory
-_tmp_test.R
-visR.Rproj
+
