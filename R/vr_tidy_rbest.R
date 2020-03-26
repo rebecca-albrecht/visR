@@ -12,6 +12,7 @@
 #'
 #' @return tidied tibble based on the broom data model. 
 #' The current data model for the tibble includes the following variables:
+#' 
 #' * row_id 
 #' * study_id
 #' * study    
